@@ -13,5 +13,5 @@ else:
     while numero>0:
         textosalida=textosalida+str(numero)+','
         numero=numero-1
-numero=len(textosalida)-1
-print (kill_char(textosalida,numero))
+numero=len(textosalida)-1#aca retorno la cantidad de caracteres del string
+print (kill_char(textosalida,numero))# imprimo la salida con una coma menos
