@@ -1,7 +1,7 @@
 import requests
-import  configuraciones
+import  apiskeys.configuraciones
 
-api=configuraciones.apikeyopendota
+api=apiskeys.configuraciones.apikeyopendota
 
 
 def descargarPartidaxId(idpartida,api):
