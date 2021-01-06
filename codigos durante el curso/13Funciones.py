@@ -19,5 +19,3 @@ def descargarPartidaxId(idpartida,api):
             print('se ha obtenido el archivo de la partida %s correctamente'%(idpartida))
         else :
             print('Error: STATUS ')
-
-descargarPartidaxId('5773559310',api)
