@@ -1,7 +1,7 @@
 import requests
-import  configuracion
+import  configuraciones
 
-api=configuracion.apikeyopendota
+api=configuraciones.apikeyopendota
 
 
 def descargarPartidaxId(idpartida,api):
