@@ -1,7 +1,7 @@
 import sys
-import  apiskeys.configuraciones
+from CodigosPython.apiskeys import configuraciones
 import requests
-apikeyopendota=apiskeys.configuraciones.apikeyopendota
+apikeyopendota=configuraciones.apikeyopendota
 ##aca trae toma el argumento que se pasa desde el cmd
 idpartida=sys.argv[1]
 
@@ -18,4 +18,3 @@ if __name__=='__main__':
         print('se ha obtenido el archivo de la partida %s correctamente'%(idpartida))
     else :
         print('Error: STATUS ')
-

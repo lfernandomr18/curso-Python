@@ -1,8 +1,15 @@
 import requests
-from apiskeys import configuraciones
+import sys
+sys.path.append("..")
 
-api=configuraciones.apikeyopendota
+from configuraciones import apikeyopendota
 
+
+
+
+
+
+api=apikeyopendota
 
 def descargarPartidaxId(idpartida,api):
     

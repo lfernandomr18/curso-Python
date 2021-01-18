@@ -1,11 +1,12 @@
 import json 
-from apiskeys import configuraciones
+
 from Funciones import PartidaxId
 import requests
+from configuraciones import apikeyopendota
 
 
 
-api=configuraciones.apikeyopendota
+api=apikeyopendota
 
 salida=PartidaxId("5769042950",api)  
 
@@ -47,7 +48,7 @@ nuevapartida= Partida(json_dataDePartida['match_id'],json_dataDePartida['barrack
 
 ##agrega nuevo jugador dentro del objeto creado
 nuevapartida.players.append('Fernando')
-print(nuevapartida)
+
 
 
 
