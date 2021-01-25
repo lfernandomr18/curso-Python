@@ -1,7 +1,9 @@
 import sys
-from CodigosPython.apiskeys import configuraciones
+
+sys.path.append("..")
+from configuraciones import apikeyopendota
 import requests
-apikeyopendota=configuraciones.apikeyopendota
+
 ##aca trae toma el argumento que se pasa desde el cmd
 idpartida=sys.argv[1]
 

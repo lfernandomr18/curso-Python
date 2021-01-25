@@ -18,14 +18,12 @@ class Adornos(Productos):
 class Alimentos(Productos):
     productor=''
     distribuidor=''
-    ## quiero definir el __innit__
-    # def __init__(self,codigo,nombre,precio,descripcion,productor,distribuidor):
-    #     self.codigo=codigo
-    #     self.nombre=nombre
-    #     self.precio=precio
-    #     self.descripcion=descripcion
-    #     self.productor=productor
-    #     self.distribuidor=distribuidor
+    # quiero definir el __innit__
+    def __init__(self,codigo,nombre,precio,descripcion,productor,distribuidor):
+        Productos.__init__(self,codigo,nombre,precio,descripcion)
+       
+        self.productor=productor
+        self.distribuidor=distribuidor
     def __str__(self):
         ##la f es de format
         return f"CODIGO \t\t {self.codigo}\n"\
@@ -40,9 +38,8 @@ class Alimentos(Productos):
 
 adornos=Adornos(1,'lampara',120,'lampara de casa')
 # print(adornos)
-ali=Alimentos(1,'QUESO',1.20,'SIN SAL')
-ali.productor='TU GRANJA'
-ali.distribuidor='TU DISTIBUIDOR'
+ali=Alimentos(1,'QUESO',1.20,'SIN SAL','TU PRODUCTOR','TU DISTRIBUIDOR')
+
 # print(ali)
 lstProductos=[adornos,ali]
 
@@ -55,9 +52,9 @@ for p in lstProductos:
     
     
     
-def descuento(Productos,rebaja):
-    Productos.precio= Productos.precio-( Productos.precio/100*rebaja)
+# def descuento(Productos,rebaja):
+#     Productos.precio= Productos.precio-( Productos.precio/100*rebaja)
 
-print(ali)
-descuento(ali,50)
-print(ali)
+# print(ali)
+# descuento(ali,50)
+# print(ali)
