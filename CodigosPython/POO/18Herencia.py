@@ -16,8 +16,6 @@ class Adornos(Productos):
             f"DESCRIPCION \t {self.descripcion}\n"
 
 class Alimentos(Productos):
-    productor=''
-    distribuidor=''
     # quiero definir el __innit__
     def __init__(self,codigo,nombre,precio,descripcion,productor,distribuidor):
         Productos.__init__(self,codigo,nombre,precio,descripcion)
@@ -34,22 +32,33 @@ class Alimentos(Productos):
             f"DISTRIBUIDOR \t {self.distribuidor}\n"
 
 
+class Moto(Productos):
+    def __init__(self,codigo,nombre,precio,descripcion,kilometraje):
+        super().__init__(codigo,nombre,precio,descripcion)
+        self.kilometraje=kilometraje
+
+    def __str__(self):
+        return f'Nombre: {self.nombre} \nKilometraje:  {self.kilometraje}'
 
 
-adornos=Adornos(1,'lampara',120,'lampara de casa')
-# print(adornos)
-ali=Alimentos(1,'QUESO',1.20,'SIN SAL','TU PRODUCTOR','TU DISTRIBUIDOR')
 
-# print(ali)
-lstProductos=[adornos,ali]
+# adornos=Adornos(1,'lampara',120,'lampara de casa')
+# # print(adornos)
+# ali=Alimentos(1,'QUESO',1.20,'SIN SAL','TU PRODUCTOR','TU DISTRIBUIDOR')
 
-for p in lstProductos:
+# # print(ali)
+# lstProductos=[adornos,ali]
+
+# for p in lstProductos:
     
-    if (isinstance(p,Adornos)):
-        print(p.codigo,p.nombre)
-    elif(isinstance(p,Alimentos)):
-        print(p.codigo,p.nombre,p.distribuidor)
-    
+#     if (isinstance(p,Adornos)):
+#         print(p.codigo,p.nombre)
+#     elif(isinstance(p,Alimentos)):
+#         print(p.codigo,p.nombre,p.distribuidor)
+
+
+motito=Moto(1,'moto',120,'moto verde',1512)
+print(motito)  
     
     
 # def descuento(Productos,rebaja):
