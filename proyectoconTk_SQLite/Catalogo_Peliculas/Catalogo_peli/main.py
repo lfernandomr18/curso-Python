@@ -1,7 +1,5 @@
 import tkinter as tk
-import sys
-sys.path.append("..")
-from client.gui_app import Frame
+from client.gui_app import Frame,barra_menu
 
 def main():
     ##creando GUI
@@ -9,6 +7,8 @@ def main():
     root.title('Catalogo de Peliculas')
     root.iconbitmap('img\cp-logo.ico')
     root.resizable(0,0)
+    ##llama a la barra de menu
+    barra_menu(root)
 
 
     ##creado el Frame donde va todo dentro del a GUI
