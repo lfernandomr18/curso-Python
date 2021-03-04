@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\51935\Desktop\CURSOS\Curso Python\proyectoconTk_SQLite\Catalogo_Peliculas\envCP
+set VIRTUAL_ENV=C:\CODIGOS\curso-Python\proyectoconTk_SQLite\Catalogo_Peliculas\envCP
 
 if not defined PROMPT set PROMPT=$P$G
 
