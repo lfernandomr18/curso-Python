@@ -1,7 +1,7 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk,messagebox
 
-from model.pelicula_dao import crear_tabla,eliminar_tabla
+from model.pelicula_dao import crear_tabla,eliminar_tabla,pelicula,guardar,listar,editar
 
 def barra_menu(root):
     ##crea barra de menu
@@ -25,6 +25,7 @@ class Frame(tk.Frame):
         self.root=root
         self.pack()
         self.config(width=480,height=320)
+        self.id_pelicula=None
         self.campos_pelicula()
         self.desabilitar_campos()
         self.tabla_peliculas()
@@ -72,7 +73,7 @@ class Frame(tk.Frame):
         self.btn_Cancelar.config(width=20,font=('Arial',12,'bold'),fg='white',bg='red')
         self.btn_Cancelar.grid(row=3,column=2,padx=10,pady=10)
 
-        self.btn_editar=tk.Button(self,text='EDITAR')
+        self.btn_editar=tk.Button(self,text='EDITAR',command=self.editar_datos)
         self.btn_editar.config(width=20,font=('Arial',12,'bold'),fg='white',bg='blue')
         self.btn_editar.grid(row=5,column=0,padx=10,pady=10)
 
@@ -100,17 +101,50 @@ class Frame(tk.Frame):
         self.btn_Cancelar.config(state='disabled')
     
     def guardar_datos(self):
+        
+        pelicula1=pelicula(
+        self.txt_nombre.get(),
+        self.txt_Duracion.get(),
+        self.txt_Genero.get()
+
+        )
+        if self.id_pelicula==None:
+            guardar(pelicula1)
+        else:
+            editar(pelicula1,self.id_pelicula)
+            
+        self.tabla_peliculas()
+
         self.desabilitar_campos()
     
     def tabla_peliculas(self):
+        self.lista_peliculas=listar()
+        self.lista_peliculas.reverse()
         self.tabla=ttk.Treeview(self,column=('Nombre','Duración','Genero'))
-        self.tabla.grid(row=4,column=0,columnspan=4)
+        self.tabla.grid(row=4,column=0,columnspan=4,sticky='nse')
+        self.scroll=ttk.Scrollbar(self,orient='vertical',command=self.tabla.yview)
+        self.scroll.grid(row=4,column=4,sticky='nse')
+        self.tabla.configure(yscrollcommand=self.scroll.set)
         self.tabla.heading('#0',text='ID')
         self.tabla.heading('#1',text='Nombre')
         self.tabla.heading('#2',text='Duración')
         self.tabla.heading('#3',text='Genero')
-        self.tabla.insert('',0,text='1',values=('El señor de los anillos',2.30,'Fantasía'))
+        # self.tabla.insert('',0,text='1',values=('El señor de los anillos',2.30,'Fantasía'))
+        for p in self.lista_peliculas:
+            self.tabla.insert('',0,text=p[0],values=(p[1],p[2],p[3]))
 
+    def editar_datos(self):
+        try:
+            self.id_pelicula=self.tabla.item(self.tabla.selection())['text']
+            self.nombre_pelicula=self.tabla.item(self.tabla.selection())['values'][0]
+            self.duracion_pelicula=self.tabla.item(self.tabla.selection())['values'][1]
+            self.genero_pelicula=self.tabla.item(self.tabla.selection())['values'][2]
+            self.habilitar_campos()
+            self.txt_nombre.insert(0,self.nombre_pelicula)
+            self.txt_Duracion.insert(0,self.duracion_pelicula)
+            self.txt_Genero.insert(0,self.genero_pelicula)
+            
 
-
+        except:
+            messagebox.showwarning('Edicion','error')
 
